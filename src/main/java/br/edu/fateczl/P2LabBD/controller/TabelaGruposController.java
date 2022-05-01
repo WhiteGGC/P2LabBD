@@ -34,6 +34,7 @@ public class TabelaGruposController {
 		List<Time> listaTimes = new ArrayList<Time>();
 		String grupo = "";
 		String erro = "";
+		System.out.println(allRequestParam);
 		for (String key : allRequestParam.keySet()) {
 			if (key.equals("button")) {
 				grupo = allRequestParam.get(key);

@@ -1,5 +1,6 @@
 package br.edu.fateczl.P2LabBD.persistence;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.edu.fateczl.P2LabBD.model.Jogos;
-import br.edu.fateczl.P2LabBD.model.Time;
 
 @Component
 public class JogosDao implements IJogosDao{
@@ -66,9 +66,29 @@ public class JogosDao implements IJogosDao{
 	}
 
 	@Override
-	public List<Jogos> atualizaJogos(Jogos jogo) throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public void atualizaJogos(Jogos jogo) throws SQLException, ClassNotFoundException {
+		Connection c = gDao.getConnection();
+		String sql = "{CALL sp_marca_gols (?,?,?,?)}";
+		CallableStatement cs = c.prepareCall(sql);
+		cs.setInt(1, jogo.getGolsTimeA());
+		cs.setInt(1, jogo.getGolsTimeB());
+		cs.setString(1, jogo.getTimeA());
+		cs.setString(1, jogo.getTimeB());
+		
+		cs.close();
+		c.close();
+		
+	}
+
+	@Override
+	public void atualizaJogosAleatorio() throws SQLException, ClassNotFoundException {
+		Connection c = gDao.getConnection();
+		String sql = "{CALL sp_marcar_aleatorios}";
+		CallableStatement cs = c.prepareCall(sql);
+		cs.execute();
+		
+		cs.close();
+		c.close();
 	}
 
 	

@@ -44,13 +44,63 @@ public class ResultadosController {
 		List<Jogos> listaJogos = new ArrayList<Jogos>();
 		String erro = "";
 		String data = "";
+		int golsTimeA = -1;
+		int golsTimeB = -1;
+		String timeA = "";
+		String timeB = "";
+		boolean inserir = false;
+		
+		System.out.println(allRequestParam);
 		for (String key : allRequestParam.keySet()) {
 			if (key.equals("buttonData")) {
 				data = allRequestParam.get(key);
 			}
+			if(key.equals("buttonMarcar")) {
+				 inserir = true;
+			}
+		}
+		if(allRequestParam.containsKey("buttonMarcar")) {
+//			for (String key : allRequestParam.keySet()) {
+//				if (key.equals("timeA")) {
+//					timeA = allRequestParam.get(key);
+//				}
+//				if (key.equals("timeB")) {
+//					timeB = allRequestParam.get(key);
+//				}
+//				if (key.equals("golsTimeA")) {
+//					golsTimeA = Integer.parseInt(allRequestParam.get(key));
+//				}
+//				if (key.equals("golsTimeB")) {
+//					golsTimeB = Integer.parseInt(allRequestParam.get(key));
+//				}
+//
+//				if(timeA != "" && timeB != "" && golsTimeA != -1 && golsTimeB != -1) {
+//					Jogos jogo = new Jogos();
+//					jogo.setGolsTimeA(golsTimeA);
+//					jogo.setGolsTimeB(golsTimeB);
+//					jogo.setTimeA(timeA);
+//					jogo.setTimeB(timeB);
+//					System.out.println(jogo);
+//					listaJogos.add(jogo);
+//					golsTimeA = -1;
+//					golsTimeB = -1;
+//					timeA = "";
+//					timeB = "";
+//				}
+//			}
 		}
 		try {
+//			for (Jogos jogo : listaJogos) {
+//				jDao.atualizaJogos(jogo);
+//			}
+			if(inserir == true) {
+				System.out.println("chegou aqui");
+				jDao.atualizaJogosAleatorio();
+				model.addAttribute("mensagem", "Times aleatórios inseridos com sucesso");
+			}
+		
 			listaJogos = jDao.listaJogos(data);
+			System.out.println(listaJogos);
 		} catch (ClassNotFoundException | SQLException e) {
 			erro = e.getMessage();
 		} finally {
@@ -61,4 +111,6 @@ public class ResultadosController {
 		return new ModelAndView("resultados");
 		
 	}
+	
+	
 }

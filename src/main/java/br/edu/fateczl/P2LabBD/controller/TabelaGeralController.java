@@ -26,7 +26,7 @@ public class TabelaGeralController {
 	public ModelAndView init(ModelMap model) {
 		List<Time> listaTimes = new ArrayList<Time>();
 		String erro = "";
-		
+
 		try {
 			listaTimes = tDao.listaTabelaGeral();
 		} catch (ClassNotFoundException | SQLException e) {

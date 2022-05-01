@@ -12,7 +12,7 @@
 		<jsp:include page="menu.jsp" />
 		<br />
 	</div>
-	<div>
+	<div align="center">
 		<form action="tabela_grupos" method="post">
 			<table>
 			<tr>

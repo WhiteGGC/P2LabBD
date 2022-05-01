@@ -11,7 +11,7 @@
 		<jsp:include page="menu.jsp" />
 	</div>
 	
-	<h1>Campeonato Paulista</h1>
+	<h1 align="center">Campeonato Paulista</h1>
 	
 </body>
 </html>

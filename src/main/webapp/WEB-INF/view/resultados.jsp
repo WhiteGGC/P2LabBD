@@ -29,7 +29,7 @@
 		<div>	
 				<c:if test="${not empty listaJogos }">
 				<div align="center">
-					<table style="margin: 1px solid black">
+					<table style="border: 1px solid black">
 						<thead>
 						<tr>
 							<th style="border: 1px solid black">Time A</th>
@@ -40,15 +40,21 @@
 					</thead>
 						<c:forEach items="${listaJogos }" var="j">
 							<tr>
-								<td style="border: 1px solid black"><c:out value="${j.timeA }" /></td>
-								<td style="border: 1px solid black"><input type="number" id="golsTimeA" name="golsTimeA" placeholder="${j.golsTimeA }" ></td>
-								<td style="border: 1px solid black"><input type="number" id="golsTimeB" name="golsTimeB" placeholder="${j.golsTimeB }" ></td>
-								<td style="border: 1px solid black"><c:out value="${j.timeB }" /></td>
+								<td style="border: 1px solid black"><input type="text" id="timeA" name="timeA" value="${j.timeA }" readonly></td>
+								<td style="border: 1px solid black"><input type="number" id="golsTimeA" name="golsTimeA" value="${j.golsTimeA }" ></td>
+								<td style="border: 1px solid black"><input type="number" id="golsTimeB" name="golsTimeB" value="${j.golsTimeB }"></td>
+								<td style="border: 1px solid black"><input type="text" id="timeB" name="timeB" value="${j.timeB }" readonly></td>
 							</tr>
 						</c:forEach>
 					</table>
+					<div align = "center">
+						<button type="submit" name="buttonMarcar" value="buttonMarcar">Marcar jogos (aleatórios)</button>
+						<c:if test="${not empty mensagem }">
+							<H2><c:out value="${mensagem }" /></H2>
+						</c:if>
+					</div>
 				</div>
-				</c:if>
+			</c:if>
 		</div>
 	</form>
 	<div>

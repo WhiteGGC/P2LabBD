@@ -12,7 +12,7 @@
 		<jsp:include page="menu.jsp" />
 		<br />
 	</div>
-	<div>	
+	<div align="center">	
 			<c:if test="${not empty listaTabelaGeral }">
 			<table border="1">
 				<thead>
