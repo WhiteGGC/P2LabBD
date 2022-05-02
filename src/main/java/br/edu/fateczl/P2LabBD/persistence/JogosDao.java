@@ -91,5 +91,26 @@ public class JogosDao implements IJogosDao{
 		c.close();
 	}
 
+	@Override
+	public List<Jogos> listaQuartas() throws SQLException, ClassNotFoundException {
+		Connection c = gDao.getConnection();
+		List<Jogos> lista = new ArrayList<Jogos>();
+		String sql = "SELECT * FROM fn_quartas()";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			Jogos j = new Jogos();
+			j.setTimeA(rs.getString("timeA"));
+			j.setTimeB(rs.getString("timeB"));
+			
+			lista.add(j);
+		}
+		rs.close();
+		ps.close();
+		c.close();
+		
+		return lista;
+	}
+
 	
 }

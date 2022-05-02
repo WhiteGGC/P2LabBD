@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href='<c:url value="./resources/css/styles.css" />'>
 <title>Tabela Geral</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
 		<jsp:include page="menu.jsp" />
 		<br />
 	</div>
-	<div align="center">	
+	<div id="centro" align="center">	
 			<c:if test="${not empty listaTabelaGeral }">
 			<table border="1">
 				<thead>

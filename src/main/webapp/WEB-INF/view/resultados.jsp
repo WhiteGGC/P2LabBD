@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href='<c:url value="./resources/css/styles.css" />'>
 <title>Resultados Jogos</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
 		<br />
 	</div>
 	<form action="resultados" method="post">
-		<div>	
+		<div id="datas">	
 				<c:if test="${not empty listaDatas }">
 				<div align="center">
 					<table style="margin: 1px solid black">
@@ -26,7 +27,7 @@
 				</c:if>
 		</div>
 		
-		<div>	
+		<div id="centro">	
 				<c:if test="${not empty listaJogos }">
 				<div align="center">
 					<table style="border: 1px solid black">

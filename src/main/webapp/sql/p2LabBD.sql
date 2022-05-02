@@ -419,11 +419,44 @@ SET @loop = 1
 	END
 END
 
+/*FUNCTION PROJEÇÂO DAS QUARTAS DE FINAL*/
+
+CREATE FUNCTION fn_quartas()
+RETURNS @tabela TABLE (
+timeA		VARCHAR(100),
+timeB		VARCHAR(100)
+)
+AS
+BEGIN
+	
+	DECLARE @time1 VARCHAR(100), @time2 VARCHAR(100), @grupo VARCHAR(1), @loop INT
+	SET @loop = 1
+
+
+	WHILE(@loop < 5)BEGIN
+		SELECT @grupo = nome FROM grupos WHERE codigoGrupo = @loop
+
+		SELECT TOP 1 @time1 = nomeTime FROM fn_tabela_grupos(@grupo) ORDER BY pontos DESC, vitorias DESC, golsMarcados DESC, saldoGols DESC 
+	
+		SELECT TOP 1 @time2 = nomeTime FROM fn_tabela_grupos(@grupo) WHERE nomeTime != @time1
+		ORDER BY pontos DESC, vitorias DESC, golsMarcados DESC, saldoGols DESC
+
+		INSERT INTO @tabela VALUES(@time1, @time2)
+
+		SET @loop = @loop + 1
+	END
+
+	RETURN
+END
+
+SELECT * FROM grupos
 EXEC sp_marcar_aleatorios
+
+SELECT * FROM fn_quartas()
 
 DROP FUNCTION fn_tabela_geral
 
-SELECT * FROM fn_tabela_grupos('D')
+SELECT * FROM fn_tabela_grupos('D') ORDER BY pontos DESC, vitorias DESC, golsMarcados DESC, saldoGols DESC
 
 SELECT * FROM fn_tabela_geral() ORDER BY pontos DESC, vitorias DESC, golsMarcados DESC, saldoGols DESC
 

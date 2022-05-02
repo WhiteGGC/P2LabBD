@@ -50,7 +50,6 @@ public class ResultadosController {
 		String timeB = "";
 		boolean inserir = false;
 		
-		System.out.println(allRequestParam);
 		for (String key : allRequestParam.keySet()) {
 			if (key.equals("buttonData")) {
 				data = allRequestParam.get(key);
@@ -94,13 +93,11 @@ public class ResultadosController {
 //				jDao.atualizaJogos(jogo);
 //			}
 			if(inserir == true) {
-				System.out.println("chegou aqui");
 				jDao.atualizaJogosAleatorio();
 				model.addAttribute("mensagem", "Times aleatórios inseridos com sucesso");
 			}
 		
 			listaJogos = jDao.listaJogos(data);
-			System.out.println(listaJogos);
 		} catch (ClassNotFoundException | SQLException e) {
 			erro = e.getMessage();
 		} finally {

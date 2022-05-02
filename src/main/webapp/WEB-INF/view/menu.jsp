@@ -8,14 +8,15 @@
 </head>
 <body>
 	<div align="center">
-		<table style="border: 1px solid black">
-			<tr>
-				<td style="border: 1px solid black"><a href = "index">Inicial</a></td>
-				<td style="border: 1px solid black"><a href = "resultados">Marcar resultados</a></td>
-				<td style="border: 1px solid black"><a href = "tabela_geral">Tabela Geral</a></td>
-				<td style="border: 1px solid black"><a href = "tabela_grupos">Tabela de grupos</a></td>
-			<tr>	
-		</table>
+		<nav id=menu>
+			<ul>
+				<li><a href = "index">Inicial</a></li>
+				<li><a href = "resultados">Marcar resultados</a></li>
+				<li><a href = "tabela_geral">Tabela Geral</a></li>
+				<li><a href = "tabela_grupos">Tabela de grupos</a></li>
+				<li><a href = "quartas">Quartas de final</a></li>
+			</ul>	
+		</nav>
 	</div>
 </body>
 </html>
